@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import type { CaseStudy } from '../data/cases';
+interface Props { item: CaseStudy; n: number; size?: 'big' | 'small'; eager?: boolean }
+const { item, n, size = 'small', eager = false } = Astro.props;
+---
+<a href={`/works/${item.slug}`} class:list={['card reveal', size]}>
+  <p class="meta"><span>{n} / {item.client}</span></p>
+  <div class="media">
+    <Image
+      src={item.hero.src}
+      alt={item.hero.alt}
+      widths={size === 'big' ? [640, 1000, 1400, 2000] : [480, 720, 1000]}
+      sizes={size === 'big' ? '(max-width: 720px) 100vw, 50vw' : '(max-width: 720px) 100vw, 25vw'}
+      loading={eager ? 'eager' : 'lazy'}
+    />
+  </div>
+  <p class="title">{item.title}</p>
+</a>
+
+<style>
+  .card { display: grid; gap: 10px; align-content: start; }
+  .card .meta span { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .4s var(--ease); }
+  .card:hover .meta span, .card:focus-visible .meta span { background-size: 100% 1px; }
+  .media { aspect-ratio: 16 / 10; }
+  .big .media { aspect-ratio: 16 / 9.4; }
+  .title { font-size: .92em; color: var(--muted); max-width: 36ch; opacity: 0; transform: translateY(-4px); transition: opacity .35s, transform .35s var(--ease); }
+  .card:hover .title, .card:focus-visible .title { opacity: 1; transform: none; }
+  @media (hover: none) { .title { opacity: 1; transform: none; } }
+</style>

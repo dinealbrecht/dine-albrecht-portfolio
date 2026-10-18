@@ -1,0 +1,144 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkGrid from '../components/WorkGrid.astro';
+import Email from '../components/Email.astro';
+import { site, home, clients, services, about } from '../data/site';
+import { cases, featured } from '../data/cases';
+import heroInline from '../assets/work/movi-1.webp';
+import heroStrip from '../assets/work/stella-1.webp';
+import statementStrip from '../assets/work/mclaren-1.webp';
+import portrait from '../assets/site/dine.jpg';
+---
+<BaseLayout>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <h1 class="display">
+      {home.heroBefore}
+      <span class="inline-img" aria-hidden="true">
+        <Image src={heroInline} alt="" widths={[240, 480]} sizes="12vw" loading="eager" />
+      </span>
+      {home.heroAfter}
+    </h1>
+    <div class="row4 meta hero-foot">
+      <span>{site.availability}</span>
+      <span class="hide-sm">Websites · Apps · Strategy</span>
+      <a href="#work" class="hide-sm link-u">Scroll to view more ↓</a>
+      <span>©{site.year}</span>
+    </div>
+  </section>
+  <div class="strip zoom">
+    <Image src={heroStrip} alt="Stella Sport “Tanks that break barriers” product story" widths={[960, 1600, 2400]} sizes="100vw" loading="eager" />
+  </div>
+
+  <!-- SELECTED WORK -->
+  <section id="work" aria-labelledby="work-h">
+    <div class="sec-head wrap">
+      <hr />
+      <h2 class="h2 reveal" id="work-h">Selected work</h2>
+    </div>
+    <WorkGrid items={featured} />
+    <div class="wrap view-all meta">
+      <a href="/works" class="link-u">View all ({cases.length})</a>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="statement dark" aria-labelledby="st-h">
+    <div class="wrap st-inner">
+      <h2 class="h2 reveal" id="st-h">{home.statement}</h2>
+      <ul class="clients">
+        {clients.map((c) => (
+          <li class="meta"><span>{c.name}</span><span class="muted">{c.note}</span></li>
+        ))}
+      </ul>
+      <a href="#services" class="meta link-u">Scroll to view more ↓</a>
+    </div>
+    <div class="strip zoom">
+      <Image src={statementStrip} alt="McLaren 12C Spider launch site" widths={[960, 1600, 2400]} sizes="100vw" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" aria-labelledby="sv-h">
+    <div class="sec-head wrap">
+      <hr />
+      <h2 class="h2 reveal" id="sv-h">Services</h2>
+    </div>
+    <div class="wrap services">
+      <p class="lede">{services.intro}</p>
+      <ol>
+        {services.items.map((s, i) => (
+          <li class="reveal">
+            <span class="meta">0{i + 1} / {s.title}</span>
+            <span class="svc">{s.line}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="ab-h" class="about">
+    <div class="sec-head wrap">
+      <hr />
+      <h2 class="h2 reveal" id="ab-h">{about.heading}</h2>
+    </div>
+    <div class="wrap about-grid">
+      <div class="media portrait">
+        <Image src={portrait} alt="Dine working at her laptop" widths={[360, 720]} sizes="(max-width: 720px) 60vw, 18vw" loading="lazy" />
+      </div>
+      {about.columns.map((p) => <p class="col">{p}</p>)}
+      <Email class="meta link-u cta" show={false} label="Get in touch →" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { min-height: calc(100svh - 54px - 46vh); display: grid; grid-template-rows: 1fr auto; padding-top: clamp(48px, 10vh, 140px); }
+  .hero h1 { max-width: 16ch; align-self: center; }
+  .inline-img { display: inline-block; vertical-align: baseline; width: 1.35em; height: .74em; margin-inline: .04em .12em; overflow: hidden; }
+  .inline-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .hero-foot { padding-block: clamp(28px, 4vw, 48px) 18px; }
+
+  .strip { height: 46vh; min-height: 260px; overflow: hidden; }
+  .strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
+
+  .view-all { display: flex; justify-content: flex-end; padding-block: clamp(48px, 6vw, 96px) clamp(64px, 8vw, 120px); }
+
+  .statement .st-inner { min-height: 80svh; display: grid; grid-template-rows: 1fr auto auto; gap: clamp(32px, 4vw, 56px); padding-block: clamp(80px, 12vw, 180px) 18px; }
+  .statement h2 { max-width: 15ch; align-self: center; }
+  .clients { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px var(--gutter); border-top: 1px solid var(--line); padding-top: 16px; }
+  .clients li { display: grid; gap: 2px; }
+  @media (max-width: 720px) { .clients { grid-template-columns: 1fr 1fr; } }
+
+  .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter); padding-bottom: clamp(64px, 8vw, 120px); }
+  .services .lede { grid-column: 1 / span 2; }
+  .services ol { grid-column: 3 / span 2; list-style: none; padding: 0; }
+  .services li { display: grid; grid-template-columns: 1fr 2fr; gap: var(--gutter); padding-block: 16px 22px; border-top: 1px solid var(--line); align-items: baseline; }
+  .svc { font-size: clamp(1.4rem, 2.4vw, 2.6rem); letter-spacing: -.035em; line-height: 1; }
+  @media (max-width: 900px) {
+    .services .lede, .services ol { grid-column: 1 / -1; }
+    .services li { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .about-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter); padding-bottom: clamp(80px, 10vw, 160px); align-items: start; }
+  .portrait { aspect-ratio: 4 / 5; max-width: 220px; }
+  .portrait img { object-position: center; }
+  .about-grid .col { grid-row: 1; font-size: clamp(1.1rem, 1.45vw, 1.55rem); line-height: 1.15; letter-spacing: -.02em; }
+  .about-grid .col:nth-of-type(1) { grid-column: 3; }
+  .about-grid .col:nth-of-type(2) { grid-column: 4; }
+  .about-grid :global(.cta) { grid-column: 4; justify-self: start; margin-top: 8px; }
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr 1fr; }
+    .portrait { grid-column: 1 / -1; }
+    .about-grid .col { grid-row: auto; }
+    .about-grid .col:nth-of-type(1) { grid-column: 1; }
+    .about-grid .col:nth-of-type(2) { grid-column: 2; }
+    .about-grid :global(.cta) { grid-column: 1; }
+  }
+  @media (max-width: 560px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-grid .col:nth-of-type(n) { grid-column: 1; }
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+// Rhythm from the reference: [big][small][small] then [small][big][small]-ish, repeating.
+import CaseCard from './CaseCard.astro';
+import type { CaseStudy } from '../data/cases';
+interface Props { items: CaseStudy[]; eagerFirst?: boolean }
+const { items, eagerFirst = false } = Astro.props;
+const pattern: ('big' | 'small')[] = ['big', 'small', 'small', 'small', 'big', 'small'];
+---
+<div class="grid wrap">
+  {items.map((item, i) => (
+    <CaseCard item={item} n={i + 1} size={pattern[i % 6]} eager={eagerFirst && i < 3} />
+  ))}
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(56px, 7vw, 120px) var(--gutter);
+    align-items: start;
+  }
+  .grid > :global(.big) { grid-column: span 2; }
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; gap: 48px; }
+    .grid > :global(.big) { grid-column: auto; }
+  }
+</style>

@@ -1,0 +1,7 @@
+---
+// Obfuscated email: the address is never in the HTML. BaseLayout's script assembles it.
+import { site } from '../data/site';
+interface Props { class?: string; show?: boolean; label?: string }
+const { class: cls = '', show = true, label = 'Get in touch' } = Astro.props;
+---
+<a class={`js-email ${cls}`} href="/contact" data-e={site.emailEncoded} data-show={show ? '1' : undefined}>{show ? 'hello [at] dinealbrecht.net' : label}<slot /></a>

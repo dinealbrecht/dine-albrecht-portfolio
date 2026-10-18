@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import Email from './Email.astro';
+import { site } from '../data/site';
+import bg from '../assets/work/stella-3.webp';
+---
+<section class="contact-block dark" aria-labelledby="cb-h">
+  <Image class="bg" src={bg} alt="" widths={[960, 1600, 2400]} sizes="100vw" loading="lazy" />
+  <div class="inner wrap">
+    <p class="meta" id="cb-h">Get in touch</p>
+    <ul class="lines">
+      <li><Email class="big" /><sup class="meta">Mail</sup></li>
+      <li><a href="/works" class="big">See the work</a><sup class="meta">Index</sup></li>
+    </ul>
+    <div class="foot row4 meta">
+      <span>{site.availability}</span>
+      <span class="hide-sm">{site.location}</span>
+      <span class="hide-sm">Designed &amp; built by Dine</span>
+      <span>©{site.year}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-block { min-height: min(100svh, 900px); display: grid; overflow: hidden; isolation: isolate; }
+  .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; z-index: -2; }
+  .contact-block::after { content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgb(0 0 0 / .72), rgb(0 0 0 / .45) 55%, rgb(0 0 0 / .8)); }
+  .inner { display: grid; grid-template-rows: auto 1fr auto; padding-block: 18px; color: #fff; }
+  .lines { margin-top: 10px; }
+  .lines li { display: flex; align-items: flex-start; gap: .4em; }
+  .lines :global(.big) { font-size: clamp(1.2rem, 6.2vw, 7.4rem); text-transform: uppercase; letter-spacing: -.045em; line-height: .98; font-weight: 450;
+    transition: opacity .3s; overflow-wrap: anywhere; }
+  .lines:hover :global(.big) { opacity: .55; }
+  .lines :global(.big:hover), .lines :global(.big:focus-visible) { opacity: 1; }
+  sup { font-size: 11px; margin-top: .8em; }
+  .foot { border-top: 1px solid rgb(255 255 255 / .7); padding-top: 14px; align-self: end; }
+</style>

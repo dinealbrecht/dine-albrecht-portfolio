@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { cases, nextCase, type CaseStudy } from '../../data/cases';
+
+export function getStaticPaths() {
+  return cases.map((c) => ({ params: { slug: c.slug }, props: { item: c } }));
+}
+const { item } = Astro.props as { item: CaseStudy };
+const next = nextCase(item.slug);
+const n = cases.indexOf(item) + 1;
+---
+<BaseLayout title={item.client} description={`${item.title}. ${item.summary ?? ''}`.trim()} ogImage={item.hero.src}>
+  <section class="head wrap">
+    <p class="meta">{String(n).padStart(2, '0')} / {item.type}</p>
+    <h1 class="display">{item.client}</h1>
+  </section>
+
+  <div class="hero zoom">
+    <Image src={item.hero.src} alt={item.hero.alt} widths={[960, 1600, 2400]} sizes="100vw" loading="eager" />
+  </div>
+
+  <section class="info wrap">
+    <div class="about">
+      <p class="meta label">/ About the project</p>
+      <p class="lede">{item.summary ?? item.title + '.'}</p>
+      {item.challenge && (<><p class="meta label">/ Challenge</p><p>{item.challenge}</p></>)}
+      {item.results && (<><p class="meta label">/ Results</p><p>{item.results}</p></>)}
+    </div>
+    <dl class="facts">
+      <div><dt class="meta label">/ Client</dt><dd>{item.client}</dd></div>
+      <div><dt class="meta label">/ Type</dt><dd>{item.type}</dd></div>
+      <div><dt class="meta label">/ Role</dt><dd>Design &amp; development</dd></div>
+    </dl>
+  </section>
+
+  <section class="gallery wrap" aria-label="Screens">
+    {item.gallery.map((g) => {
+      const tall = g.src.height > g.src.width * 0.95;
+      return (
+        <figure class:list={['shot reveal', { tall }]}>
+          <Image src={g.src} alt={g.alt} widths={[640, 1200, 2000]} sizes={tall ? '(max-width: 720px) 100vw, 50vw' : '100vw'} loading="lazy" />
+        </figure>
+      );
+    })}
+  </section>
+
+  <a href={`/works/${next.slug}`} class="next dark">
+    <div class="wrap row4 meta"><span>Next case</span><span class="hide-sm">{next.type}</span><span class="hide-sm"></span><span>→</span></div>
+    <div class="wrap next-body">
+      <p class="display">{next.client}</p>
+      <div class="media next-img">
+        <Image src={next.hero.src} alt="" widths={[640, 960]} sizes="30vw" loading="lazy" />
+      </div>
+    </div>
+  </a>
+</BaseLayout>
+
+<style>
+  .head { padding-top: clamp(80px, 16vh, 200px); padding-bottom: clamp(24px, 3vw, 40px); display: grid; gap: 14px; }
+  .hero { height: 78svh; overflow: hidden; background: #ddd; }
+  .hero img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+  @media (max-width: 720px) { .hero { height: auto; } .hero img { height: auto; } }
+
+  .info { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter); padding-block: clamp(56px, 7vw, 110px); }
+  .about { grid-column: 1 / span 2; display: grid; gap: 10px; max-width: 46ch; }
+  .about .label:not(:first-child) { margin-top: 22px; }
+  .facts { grid-column: 3 / span 2; display: grid; gap: 22px; align-content: start; font-size: clamp(1.1rem, 1.4vw, 1.5rem); letter-spacing: -.02em; }
+  .facts .label { margin-bottom: 6px; }
+  dd { margin: 0; }
+  @media (max-width: 720px) { .about, .facts { grid-column: 1 / -1; } }
+
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); padding-bottom: clamp(80px, 10vw, 160px); }
+  .shot { grid-column: 1 / -1; margin: 0; background: color-mix(in srgb, var(--ink) 6%, var(--paper)); }
+  .shot.tall { grid-column: auto; }
+  .shot img { width: 100%; }
+  @media (max-width: 720px) { .shot.tall { grid-column: 1 / -1; } }
+
+  .next { display: block; padding-block: 18px clamp(48px, 6vw, 96px); }
+  .next-body { position: relative; padding-top: clamp(80px, 12vw, 180px); }
+  .next .display { transition: opacity .3s; }
+  .next-img { position: absolute; right: var(--gutter); bottom: 0; width: min(30vw, 420px); aspect-ratio: 16/10; opacity: 0; translate: 0 12px; transition: opacity .4s, translate .5s var(--ease); }
+  .next:hover .next-img, .next:focus-visible .next-img { opacity: 1; translate: 0 0; }
+  @media (hover: none) { .next-img { display: none; } }
+</style>

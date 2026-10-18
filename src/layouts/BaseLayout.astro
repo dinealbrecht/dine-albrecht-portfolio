@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Header from '../components/Header.astro';
+import Menu from '../components/Menu.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import { site } from '../data/site';
+import defaultOg from '../assets/work/red-bull-1.webp';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: ImageMetadata;
+  headerOverlay?: boolean;
+  contactBlock?: boolean;
+}
+const {
+  title,
+  description = site.description,
+  ogImage = defaultOg,
+  headerOverlay = false,
+  contactBlock = true,
+} = Astro.props;
+
+const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — Websites that resonate`;
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', site.url).href;
+const og = await getImage({ src: ogImage, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const ogUrl = new URL(og.src, site.url).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href="/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/fragment-mono.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#f3f0e8" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+    <!-- Analytics: paste the Cloudflare Web Analytics snippet (or your old Webflow tag) here. -->
+  </head>
+  <body>
+    <a href="#main" class="skip meta">Skip to content</a>
+    <Header overlay={headerOverlay} />
+    <main id="main">
+      <slot />
+    </main>
+    {contactBlock && <ContactBlock />}
+    <Menu />
+
+    <style is:global>
+      .skip { position: absolute; left: 8px; top: -40px; background: var(--ink); color: var(--paper); padding: 8px 10px; z-index: 10; }
+      .skip:focus { top: 8px; }
+    </style>
+
+    <script>
+      // Email: decode reversed base64, assemble on the client so scrapers never see it.
+      for (const a of document.querySelectorAll<HTMLAnchorElement>('.js-email')) {
+        const addr = atob(a.dataset.e ?? '').split('').reverse().join('');
+        a.href = `mailto:${addr}`;
+        if (a.dataset.show) a.firstChild!.textContent = addr;
+      }
+
+      // Menu dialog
+      const menu = document.getElementById('menu') as HTMLDialogElement | null;
+      document.querySelectorAll('.js-menu-open').forEach((b) =>
+        b.addEventListener('click', () => {
+          menu?.showModal();
+          document.documentElement.style.overflow = 'hidden';
+        }),
+      );
+      const close = () => menu?.close();
+      document.querySelectorAll('.js-menu-close, .js-menu-link').forEach((b) => b.addEventListener('click', close));
+      menu?.addEventListener('close', () => (document.documentElement.style.overflow = ''));
+    </script>
+  </body>
+</html>

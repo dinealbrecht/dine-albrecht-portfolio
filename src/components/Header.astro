@@ -1,0 +1,16 @@
+---
+import { site } from '../data/site';
+interface Props { overlay?: boolean }
+const { overlay = false } = Astro.props;
+---
+<header class:list={['site-header wrap row4 meta', { overlay }]}>
+  <a href="/" class="link-u">{site.name}</a>
+  <span class="hide-sm">{site.role}</span>
+  <span class="hide-sm">{site.location}</span>
+  <button type="button" class="link-u js-menu-open" aria-haspopup="dialog" aria-controls="menu">Menu</button>
+</header>
+
+<style>
+  .site-header { padding-block: 18px; position: relative; z-index: 5; }
+  .overlay { position: absolute; inset: 0 0 auto 0; color: #fff; mix-blend-mode: difference; }
+</style>

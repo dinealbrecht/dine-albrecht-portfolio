@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import { nav, site } from '../data/site';
+import menuImg from '../assets/work/mclaren-3.webp';
+---
+<dialog id="menu" class="menu" aria-label="Menu">
+  <div class="panel">
+    <div class="wrap row4 meta top">
+      <span>{site.name}</span>
+      <span class="hide-sm">{site.role}</span>
+      <span class="hide-sm">{site.location}</span>
+      <button type="button" class="link-u js-menu-close" autofocus>Close</button>
+    </div>
+    <nav class="wrap links" aria-label="Main">
+      <ul>
+        {nav.map((n, i) => (
+          <li style={`--i:${i}`}><a href={n.href} class="display js-menu-link">{n.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <div class="wrap row4 meta bottom">
+      <span>{site.availability}</span>
+      <span class="hide-sm">Websites · Apps · Strategy</span>
+      <span class="hide-sm"></span>
+      <span>©{site.year}</span>
+    </div>
+  </div>
+  <div class="pic" aria-hidden="true">
+    <Image src={menuImg} alt="" widths={[800, 1400]} sizes="50vw" loading="lazy" />
+  </div>
+</dialog>
+
+<style>
+  .menu {
+    position: fixed; inset: 0; width: 100%; height: 100dvh; max-width: none; max-height: none;
+    border: 0; padding: 0; background: #000; color: var(--paper);
+    display: none; grid-template-columns: 1fr 1fr;
+  }
+  .menu[open] { display: grid; animation: fade .35s var(--ease); }
+  .menu::backdrop { background: transparent; }
+  .panel { display: grid; grid-template-rows: auto 1fr auto; min-height: 100dvh; grid-column: 1 / -1; grid-row: 1; z-index: 1; }
+  .top, .bottom { padding-block: 18px; }
+  .top > :last-child, .bottom > :last-child { justify-self: end; }
+  .links { align-self: center; }
+  .links a { display: inline-block; line-height: .95; transition: opacity .3s; }
+  .links ul:hover a { opacity: .45; }
+  .links ul a:hover, .links a:focus-visible { opacity: 1; }
+  .menu[open] .links li { animation: rise .6s var(--ease) both; animation-delay: calc(var(--i) * 60ms + 80ms); }
+  .pic { grid-column: 2; grid-row: 1; overflow: hidden; }
+  .pic img { width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 720px) { .menu { grid-template-columns: 1fr; } .pic { display: none; } }
+  @keyframes fade { from { opacity: 0; } }
+</style>
