@@ -4,7 +4,7 @@ import type { CaseStudy } from '../data/cases';
 interface Props { item: CaseStudy; n: number; size?: 'big' | 'small'; eager?: boolean }
 const { item, n, size = 'small', eager = false } = Astro.props;
 ---
-<a href={`/works/${item.slug}`} class:list={['card reveal', size]}>
+<a href={`/works/${item.slug}`} class:list={['card', size]}>
   <p class="meta"><span>{n} / {item.client}</span></p>
   <div class="media">
     <Image

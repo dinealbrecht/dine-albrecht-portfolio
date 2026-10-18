@@ -117,6 +117,32 @@
       .zoom img { animation: unzoom linear both; animation-timeline: view(); animation-range: entry 0% cover 60%; }
     }
   }
+  /* ---- scroll choreography (from the reference) ---- */
+  .pin-group { position: relative; }
+  .pin { position: sticky; top: 0; z-index: 0; }
+  .cover { position: relative; z-index: 1; background: var(--paper); }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      /* rule draws left to right, then the heading rises out of a mask */
+      .sec-head hr { transform-origin: left; animation: draw linear both; animation-timeline: view(); animation-range: entry 0% cover 25%; }
+      .mask { overflow: hidden; view-timeline: --mask; padding-bottom: .04em; }
+      .mask > span { display: block; animation: up linear both; animation-timeline: --mask; animation-range: entry 20% cover 30%; }
+
+      /* work grid: cards drift at different speeds, images move inside their frames */
+      .card { animation: drift linear both; animation-timeline: view(); animation-range: cover; }
+      .card .media img { scale: 1.12; animation: inner linear both; animation-timeline: view(); animation-range: cover; }
+
+      /* footer slides out from under the page, top first */
+      .contact-block { view-timeline: --cb; }
+      .contact-block > .inner, .contact-block > .bg { animation: under linear both; animation-timeline: --cb; animation-range: entry 0% entry 100%; }
+    }
+  }
   @keyframes rise { from { opacity: 0; transform: translateY(28px); } }
+  @keyframes draw { from { transform: scaleX(0); } }
+  @keyframes up { from { translate: 0 105%; } }
+  @keyframes drift { from { translate: 0 var(--p, 0px); } to { translate: 0 calc(var(--p, 0px) * -1); } }
+  @keyframes inner { from { translate: 0 -5%; } to { translate: 0 5%; } }
+  @keyframes under { from { translate: 0 -45%; } }
   @keyframes unzoom { from { transform: scale(1.14); } }
 }
