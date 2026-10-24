@@ -4,9 +4,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WorkGrid from '../components/WorkGrid.astro';
 import Email from '../components/Email.astro';
 import { site, home, clients, services, about } from '../data/site';
+import Type from '../components/Type.astro';
 import { cases, featured } from '../data/cases';
 import heroInline from '../assets/work/movi-1.webp';
-import heroStrip from '../assets/work/stella-1.webp';
+import heroStrip from '../assets/work/stella-1.jpg';
 import statementStrip from '../assets/work/mclaren-1.webp';
 import portrait from '../assets/site/dine.jpg';
 ---
@@ -22,7 +23,7 @@ import portrait from '../assets/site/dine.jpg';
     </h1>
     <div class="row4 meta hero-foot">
       <span>{site.availability}</span>
-      <span class="hide-sm">Websites · Apps · Strategy</span>
+      <span class="hide-sm">{site.disciplines}</span>
       <a href="#work" class="hide-sm link-u">Scroll to view more ↓</a>
       <span>©{site.year}</span>
     </div>
@@ -74,7 +75,7 @@ import portrait from '../assets/site/dine.jpg';
       <ol>
         {services.items.map((s, i) => (
           <li class="reveal">
-            <span class="meta">0{i + 1} / {s.title}</span>
+            <span class="meta"><Type text={`0${i + 1} / ${s.title}`} /></span>
             <span class="svc">{s.line}</span>
           </li>
         ))}

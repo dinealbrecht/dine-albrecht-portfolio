@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Email from '../components/Email.astro';
+import Type from '../components/Type.astro';
+import { impressum, legal } from '../data/site';
+---
+<BaseLayout title="Impressum" description="Legal notice (Impressum) for dinealbrecht.net.">
+  <section class="wrap legal">
+    <h1 class="display">{impressum.heading}</h1>
+    <p class="lede">{impressum.intro}</p>
+    <section class="block">
+      <h2 class="meta"><Type text="Name" /></h2>
+      <p>{legal.name}{legal.address.map((l) => <><br />{l}</>)}</p>
+    </section>
+    <section class="block">
+      <h2 class="meta"><Type text="Contact" /></h2>
+      <p><Email class="link-u" /></p>
+    </section>
+    {legal.vatId && (
+      <section class="block">
+        <h2 class="meta"><Type text="VAT ID" /></h2>
+        <p>{legal.vatId}</p>
+      </section>
+    )}
+  </section>
+</BaseLayout>

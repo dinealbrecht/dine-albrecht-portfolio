@@ -21,10 +21,10 @@ const pattern: ('big' | 'small')[] = ['big', 'small', 'small', 'small', 'big', '
   }
   .grid > :global(.big) { grid-column: span 2; }
   /* parallax offsets per position in the 6-card rhythm */
-  .grid > :global(:nth-child(6n+2)) { --p: 50px; }
-  .grid > :global(:nth-child(6n+3)) { --p: 110px; }
-  .grid > :global(:nth-child(6n+4)) { --p: 80px; }
-  .grid > :global(:nth-child(6n+6)) { --p: 130px; }
+  .grid > :global(:nth-child(6n+2)) { --p: 90px; }
+  .grid > :global(:nth-child(6n+3)) { --p: 180px; }
+  .grid > :global(:nth-child(6n+4)) { --p: 130px; }
+  .grid > :global(:nth-child(6n+6)) { --p: 220px; }
   @media (max-width: 720px) {
     .grid { grid-template-columns: 1fr; gap: 48px; }
     .grid > :global(.big) { grid-column: auto; }

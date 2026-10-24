@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WorkGrid from '../../components/WorkGrid.astro';
-import { cases } from '../../data/cases';
+import { cases, ndaWork } from '../../data/cases';
 ---
 <BaseLayout title="Work" description="Case studies: websites, games and apps for Red Bull, Rolex, McLaren, Stella McCartney, Heathrow and more.">
   <section class="intro wrap">
@@ -34,6 +34,23 @@ import { cases } from '../../data/cases';
       ))}
     </ol>
   </div>
+
+  <section class="nda" aria-labelledby="nda-h">
+    <div class="sec-head wrap">
+      <hr />
+      <h2 class="h2 mask" id="nda-h"><span>Under NDA</span></h2>
+    </div>
+    <ol class="nda-list wrap">
+      {ndaWork.map((w, i) => (
+        <li>
+          <span class="meta">{String(i + 1).padStart(2, '0')}</span>
+          <span class="client">{w.kind}</span>
+          <span class="t muted">{w.line}</span>
+          <span class="meta d">{w.duration && <>{w.duration}<br /></>}{w.stack.join(' · ')}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
   <div class="spacer"></div>
 </BaseLayout>
 
@@ -53,7 +70,12 @@ import { cases } from '../../data/cases';
   .thumb { position: absolute; right: 18%; top: 50%; width: 240px; aspect-ratio: 16/10; translate: 0 -50%; opacity: 0; scale: .96; pointer-events: none; transition: opacity .3s, scale .4s var(--ease); z-index: 2; }
   .v-list a:hover .thumb, .v-list a:focus-visible .thumb { opacity: 1; scale: 1; }
   .v-list a:hover .client { font-style: normal; }
+  .nda-list { list-style: none; border-bottom: 1px solid var(--line); }
+  .nda-list li { display: grid; grid-template-columns: 1fr 3fr 4fr 2fr; gap: var(--gutter); align-items: baseline; padding-block: 18px 22px; border-top: 1px solid var(--line); }
+  .nda-list .d { justify-self: end; text-align: right; }
   @media (max-width: 720px) {
+    .nda-list li { grid-template-columns: auto 1fr; row-gap: 6px; }
+    .nda-list .t, .nda-list .d { grid-column: 2; } .nda-list .d { justify-self: start; text-align: left; }
     .v-list a { grid-template-columns: auto 1fr; row-gap: 6px; }
     .t { grid-column: 2; } .type { display: none; } .thumb { display: none; }
   }

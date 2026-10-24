@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Email from '../components/Email.astro';
+import Type from '../components/Type.astro';
+import { privacy, legal } from '../data/site';
+---
+<BaseLayout title="Privacy" description="How dinealbrecht.net handles your data: no cookies, no contact form, no cross-site tracking.">
+  <section class="wrap legal">
+    <h1 class="display">{privacy.heading}</h1>
+    <p class="lede">{privacy.intro}</p>
+    {privacy.sections.map((s, i) => (
+      <section class="block">
+        <h2 class="meta"><Type text={`${String(i + 1).padStart(2, '0')} / ${s.heading}`} /></h2>
+        {s.paragraphs.map((p) => <p>{p}</p>)}
+      </section>
+    ))}
+    <section class="block">
+      <h2 class="meta"><Type text="Contact" /></h2>
+      <p><Email class="link-u" /></p>
+    </section>
+    <p class="meta muted updated">Last updated {legal.updated}</p>
+  </section>
+</BaseLayout>

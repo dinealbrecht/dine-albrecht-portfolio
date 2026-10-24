@@ -1,13 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import Email from './Email.astro';
+import Type from './Type.astro';
 import { site } from '../data/site';
-import bg from '../assets/work/stella-3.webp';
+import bg from '../assets/work/stella-3.jpg';
 ---
 <section class="contact-block dark" aria-labelledby="cb-h">
   <Image class="bg" src={bg} alt="" widths={[960, 1600, 2400]} sizes="100vw" loading="lazy" />
   <div class="inner wrap">
-    <p class="meta" id="cb-h">Get in touch</p>
+    <p class="meta" id="cb-h"><Type text="Get in touch" /></p>
     <ul class="lines">
       <li><Email class="big" /><sup class="meta">Mail</sup></li>
       <li><a href="/works" class="big">See the work</a><sup class="meta">Index</sup></li>
@@ -16,7 +17,7 @@ import bg from '../assets/work/stella-3.webp';
       <span>{site.availability}</span>
       <span class="hide-sm">{site.location}</span>
       <span class="hide-sm">Designed &amp; built by Dine</span>
-      <span>©{site.year}</span>
+      <span><a href="/privacy" class="link-u">Privacy</a> · <a href="/impressum" class="link-u">Impressum</a> · ©{site.year}</span>
     </div>
   </div>
 </section>

@@ -1,6 +1,6 @@
 # dinealbrecht.net
 
-Portfolio for Dine Studio, moved off Webflow. Static Astro 7 site (`output: static`, `build.format: 'file'`, `trailingSlash: 'never'`).
+Portfolio for Dine Albrecht, moved off Webflow. Static Astro 7 site (`output: static`, `build.format: 'file'`, `trailingSlash: 'never'`).
 
 ## Hard constraints
 

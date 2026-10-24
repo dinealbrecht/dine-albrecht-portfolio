@@ -1,0 +1,7 @@
+---
+// Mono label that types itself in as it scrolls into view (CSS only, see .tw in global.css).
+// Screen readers get the plain text; the per-letter copy is aria-hidden.
+interface Props { text: string }
+const { text } = Astro.props;
+---
+<span class="tw"><span class="sr">{text}</span><span aria-hidden="true">{Array.from(text).map((c, i) => (c === ' ' ? ' ' : <span style={`--i:${i}`}>{c}</span>))}</span></span>

@@ -1,9 +1,9 @@
 # dinealbrecht.net
 
-Portfolio for Dine Studio. Static Astro site, no CMS yet — all copy lives in two files:
+Portfolio for Dine Albrecht. Static Astro site, no CMS yet — all copy lives in two files:
 
 - `src/data/site.ts` — header, hero, clients, services, about, contact copy
-- `src/data/cases.ts` — the nine case studies (text + which screenshots)
+- `src/data/cases.ts` — the case studies (text + which screenshots)
 
 Images are in `src/assets/work/`. Astro turns them into resized WebP at build time (58 MB of PNGs → ~9 MB site).
 

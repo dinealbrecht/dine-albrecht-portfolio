@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Type from '../../components/Type.astro';
 import { cases, nextCase, type CaseStudy } from '../../data/cases';
 
 export function getStaticPaths() {
@@ -12,7 +13,7 @@ const n = cases.indexOf(item) + 1;
 ---
 <BaseLayout title={item.client} description={`${item.title}. ${item.summary ?? ''}`.trim()} ogImage={item.hero.src}>
   <section class="head wrap">
-    <p class="meta">{String(n).padStart(2, '0')} / {item.type}</p>
+    <p class="meta"><Type text={`${String(n).padStart(2, '0')} / ${item.type}`} /></p>
     <h1 class="display">{item.client}</h1>
   </section>
 
@@ -22,15 +23,16 @@ const n = cases.indexOf(item) + 1;
 
   <section class="info wrap">
     <div class="about">
-      <p class="meta label">/ About the project</p>
+      <p class="meta label"><Type text="/ About the project" /></p>
       <p class="lede">{item.summary ?? item.title + '.'}</p>
-      {item.challenge && (<><p class="meta label">/ Challenge</p><p>{item.challenge}</p></>)}
-      {item.results && (<><p class="meta label">/ Results</p><p>{item.results}</p></>)}
+      {item.challenge && (<><p class="meta label"><Type text="/ Challenge" /></p><p>{item.challenge}</p></>)}
+      {item.results && (<><p class="meta label"><Type text="/ Results" /></p><p>{item.results}</p></>)}
     </div>
     <dl class="facts">
-      <div><dt class="meta label">/ Client</dt><dd>{item.client}</dd></div>
-      <div><dt class="meta label">/ Type</dt><dd>{item.type}</dd></div>
-      <div><dt class="meta label">/ Role</dt><dd>Design &amp; development</dd></div>
+      <div><dt class="meta label"><Type text="/ Client" /></dt><dd>{item.client}</dd></div>
+      <div><dt class="meta label"><Type text="/ Type" /></dt><dd>{item.type}</dd></div>
+      <div><dt class="meta label"><Type text="/ Role" /></dt><dd>{item.role ?? 'Development'}</dd></div>
+      {item.agency && <div><dt class="meta label"><Type text="/ Agency" /></dt><dd>{item.agency}</dd></div>}
     </dl>
   </section>
 

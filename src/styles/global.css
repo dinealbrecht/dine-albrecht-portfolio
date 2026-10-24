@@ -97,6 +97,8 @@
   .muted { color: var(--muted); }
   .dark .muted { color: color-mix(in srgb, var(--paper) 60%, transparent); }
 
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .tw .sr { user-select: none; } /* copy the visible letters only, not both */
   .link-u { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .4s var(--ease); }
   .link-u:hover, .link-u:focus-visible { background-size: 100% 1px; }
 
@@ -104,6 +106,11 @@
   .sec-head { padding-top: clamp(64px, 9vw, 140px); }
   .sec-head hr { border: 0; border-top: 1px solid var(--line); margin-bottom: clamp(18px, 2vw, 28px); }
   .sec-head h2 { margin-bottom: clamp(40px, 6vw, 96px); }
+
+  /* ---- legal pages ---- */
+  .legal { padding-block: clamp(120px, 18vw, 240px) clamp(80px, 10vw, 160px); display: grid; gap: clamp(28px, 3vw, 44px); }
+  .legal .block { display: grid; gap: .8em; max-width: 62ch; padding-top: 14px; border-top: 1px solid var(--line); }
+  .legal .block p { line-height: 1.45; }
 
   /* ---- media ---- */
   .media { overflow: hidden; background: color-mix(in srgb, var(--ink) 8%, var(--paper)); }
@@ -129,9 +136,13 @@
       .mask { overflow: hidden; view-timeline: --mask; padding-bottom: .04em; }
       .mask > span { display: block; animation: up linear both; animation-timeline: --mask; animation-range: entry 20% cover 30%; }
 
+      /* mono labels type in letter by letter as they enter */
+      .tw { display: inline-block; view-timeline: --tw; }
+      .tw > [aria-hidden] > span { animation: type step-end both; animation-timeline: --tw; animation-range: cover calc(6% + var(--i) * 1.1%) cover calc(7.1% + var(--i) * 1.1%); }
+
       /* work grid: cards drift at different speeds, images move inside their frames */
       .card { animation: drift linear both; animation-timeline: view(); animation-range: cover; }
-      .card .media img { scale: 1.12; animation: inner linear both; animation-timeline: view(); animation-range: cover; }
+      .card .media img { scale: 1.2; animation: inner linear both; animation-timeline: view(); animation-range: cover; }
 
       /* footer slides out from under the page, top first */
       .contact-block { view-timeline: --cb; }
@@ -139,10 +150,11 @@
     }
   }
   @keyframes rise { from { opacity: 0; transform: translateY(28px); } }
+  @keyframes type { from { opacity: 0; } }
   @keyframes draw { from { transform: scaleX(0); } }
   @keyframes up { from { translate: 0 105%; } }
   @keyframes drift { from { translate: 0 var(--p, 0px); } to { translate: 0 calc(var(--p, 0px) * -1); } }
-  @keyframes inner { from { translate: 0 -5%; } to { translate: 0 5%; } }
+  @keyframes inner { from { translate: 0 -8%; } to { translate: 0 8%; } }
   @keyframes under { from { translate: 0 -45%; } }
   @keyframes unzoom { from { transform: scale(1.14); } }
 }

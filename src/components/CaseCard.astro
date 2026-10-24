@@ -1,11 +1,12 @@
 ---
 import { Image } from 'astro:assets';
+import Type from './Type.astro';
 import type { CaseStudy } from '../data/cases';
 interface Props { item: CaseStudy; n: number; size?: 'big' | 'small'; eager?: boolean }
 const { item, n, size = 'small', eager = false } = Astro.props;
 ---
 <a href={`/works/${item.slug}`} class:list={['card', size]}>
-  <p class="meta"><span>{n} / {item.client}</span></p>
+  <p class="meta"><span><Type text={`${n} / ${item.client}`} /></span></p>
   <div class="media">
     <Image
       src={item.hero.src}
