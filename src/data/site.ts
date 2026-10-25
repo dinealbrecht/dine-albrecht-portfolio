@@ -99,7 +99,7 @@ export const privacy = {
         'This is necessary to show you the site at all, so the legal basis is my legitimate interest in a secure, working website (Art. 6(1)(f) GDPR). Cloudflare is certified under the EU–US Data Privacy Framework and processes this data on my behalf under a data processing agreement.',
       ],
     },
-    // Only true once Cloudflare Web Analytics is switched on — remove this section until then.
+    // Matches the Cloudflare Web Analytics beacon in BaseLayout — remove both together.
     {
       heading: 'Visitor statistics',
       paragraphs: [

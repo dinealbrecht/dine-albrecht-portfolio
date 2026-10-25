@@ -6,7 +6,7 @@ Portfolio for Dine Albrecht, moved off Webflow. Static Astro 7 site (`output: st
 
 - **URLs must not change.** Case-study slugs in `src/data/cases.ts` match the old Webflow URLs (`red-bull`, `stella-mccartney`, `twentytwo`, `heathrow-airport`, `rolex`, `mclaren`, `chromor`, `movi`, `stella`). Never rename one without a redirect.
 - **Email only.** No contact form, no Calendly. Every CTA goes through `src/components/Email.astro`, which keeps the address out of the HTML. Never write the address in plain text in a template.
-- **Minimal JS.** Only the menu dialog, email assembly, and the works grid/list toggle. Everything else is static.
+- **Minimal JS.** Only the menu dialog, email assembly, the works grid/list toggle, and the Cloudflare Web Analytics beacon (cookieless, production only). Everything else is static.
 - **No new dependencies without asking.** Runtime deps are `astro` and `@astrojs/sitemap`.
 
 ## Design

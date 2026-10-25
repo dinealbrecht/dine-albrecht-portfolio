@@ -88,5 +88,10 @@ const ogUrl = new URL(og.src, site.url).href;
       document.querySelectorAll('.js-menu-close, .js-menu-link').forEach((b) => b.addEventListener('click', close));
       menu?.addEventListener('close', () => (document.documentElement.style.overflow = ''));
     </script>
+
+    {/* Cloudflare Web Analytics: cookieless visit counts (see /privacy). Production builds only. */}
+    {import.meta.env.PROD && (
+      <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "02603003529543289372782a37856222"}'></script>
+    )}
   </body>
 </html>
