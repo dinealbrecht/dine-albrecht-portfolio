@@ -7,13 +7,15 @@ export const site = {
   disciplines: 'Sites · Products · Apps',
   location: 'Working worldwide',
   url: 'https://dinealbrecht.net',
+  tagline: 'Freelance developer for brand websites & intuitive products',
   description:
-    'Dine Albrecht builds websites, apps and products, front end to back end — launch sites for Red Bull, Rolex and McLaren, e-commerce for Stella McCartney and adidas.',
+    'Freelance developer building brand websites and intuitive digital products, front end to back end — for Red Bull, Rolex, McLaren, Stella McCartney and more.',
   // Stored reversed + base64 so the address never appears in the built HTML.
   // Assembled in the browser by the script in BaseLayout.
   emailEncoded: btoa('hello@dinealbrecht.net'.split('').reverse().join('')),
   availability: 'Available for work',
-  year: new Date().getFullYear(),
+  // Build machines can report a 1970 clock, so never go below the launch year.
+  year: Math.max(new Date().getFullYear(), 2026),
 };
 
 export const nav = [
@@ -24,9 +26,9 @@ export const nav = [
 ];
 
 export const home = {
-  // Rendered as: WEBSITES [image] THAT / RESONATE. APPS / THAT DELIVER.
+  // Rendered as: WEBSITES [image] BRANDS ARE PROUD OF. PRODUCTS PEOPLE JUST GET.
   heroBefore: 'Websites',
-  heroAfter: 'that resonate. Products that deliver.',
+  heroAfter: 'brands are proud of. Products people just get.',
   statement: 'Launch sites for Red Bull, Rolex and McLaren. E-commerce for Stella McCartney and adidas.',
 };
 

@@ -43,6 +43,9 @@ import stella5 from '../assets/work/stella-5.jpg';
 import medicare1 from '../assets/work/medicare-benefits-1.jpg';
 import medicare2 from '../assets/work/medicare-benefits-2.jpg';
 import medicare3 from '../assets/work/medicare-benefits-3.jpg';
+import medicare4 from '../assets/work/medicare-benefits-4.jpg';
+import medicare5 from '../assets/work/medicare-benefits-5.jpg';
+import medicare6 from '../assets/work/medicare-benefits-6.jpg';
 import theOpen1 from '../assets/work/the-open-1.jpg';
 import theOpen2 from '../assets/work/the-open-2.jpg';
 
@@ -252,6 +255,9 @@ export const cases: CaseStudy[] = [
     hero: { src: medicare3, alt: 'Medicare Benefits homepage: “Find a new plan.” beside a woman comparing plans on a laptop' },
     gallery: [
       { src: medicare2, alt: 'Plan finder first step: “What type of Medicare coverage do you have?” with four answer buttons' },
+      { src: medicare4, alt: 'Plan finder question: “How much do you pay per month for your current plan?” with four price ranges' },
+      { src: medicare6, alt: 'Prescription drug search with autocomplete suggestions for “ibu”' },
+      { src: medicare5, alt: '“Working on your recommendations” progress list, from finding plans in your area to finalizing the recommendation' },
       { src: medicare1, alt: 'Agent tool: plan type tabs, customer and doctor filters, and premium and co-pay sliders' },
     ],
   },
