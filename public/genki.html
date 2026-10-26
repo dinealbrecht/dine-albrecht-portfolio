@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Dine Albrecht's application for Lead Web Engineer at Genki.">
+<title>Dine for Genki</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Fonts self-hosted (Latin + Latin Extended subsets), no requests to Google. */
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/genki/fonts/atkinson-hyperlegible-italic-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/genki/fonts/atkinson-hyperlegible-italic-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/genki/fonts/atkinson-hyperlegible-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/genki/fonts/atkinson-hyperlegible-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/genki/fonts/atkinson-hyperlegible-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/genki/fonts/atkinson-hyperlegible-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/genki/fonts/bricolage-grotesque-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/genki/fonts/bricolage-grotesque-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/genki/fonts/bricolage-grotesque-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/genki/fonts/bricolage-grotesque-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/genki/fonts/bricolage-grotesque-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/genki/fonts/bricolage-grotesque-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/genki/fonts/jetbrains-mono-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/genki/fonts/jetbrains-mono-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/genki/fonts/jetbrains-mono-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/genki/fonts/jetbrains-mono-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+/* Layout: a fixed road-trip scene (sky, hills, camper van) under a single column of postcards.
+   Scrolling drives the van from northern Europe toward the palms of the south and Southeast Asia. */
+:root {
+  --ink: #12212c;
+  --muted: #4e6170;
+  --paper: #fffefb;
+  --line: #d8e0e4;
+  --sea: #0a7570;
+  --sun: #f2b416;
+  --leaf: #2f7d4f;
+  --trunk: #8a6141;
+  --tree: #4f7a5a;
+  --hill-far: #a9c4b4;
+  --hill-near: #7fa88c;
+  --road: #4a5560;
+  --van: #ffffff;
+  --van-trim: #0a7570;
+  --glass: #9fd3e6;
+  --eu-top: #b9cddd; --eu-bot: #eef3f6;
+  --es-top: #ffc98a; --es-bot: #fff1df;
+  --as-top: #7fd9cf; --as-bot: #e6fbf6;
+  --stars: 0;
+  --shadow: 0 1px 2px rgb(18 33 44 / .06), 0 12px 32px -12px rgb(18 33 44 / .22);
+  --f-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e7eef1; --muted: #9db0bb; --paper: #142029; --line: #2a3a45;
+    --sea: #4fd1c5; --sun: #f5e6b8; --leaf: #2b5e42; --trunk: #5b4130; --tree: #2d4a3a;
+    --hill-far: #1f3a37; --hill-near: #172c2a; --road: #2a3036;
+    --van: #dfe7ea; --van-trim: #2aa69c; --glass: #3d6a7c;
+    --eu-top: #0c1626; --eu-bot: #22324a;
+    --es-top: #2a1633; --es-bot: #6b3440;
+    --as-top: #04222a; --as-bot: #0f4a4a;
+    --stars: 1;
+    --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 12px 32px -12px rgb(0 0 0 / .6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e7eef1; --muted: #9db0bb; --paper: #142029; --line: #2a3a45;
+  --sea: #4fd1c5; --sun: #f5e6b8; --leaf: #2b5e42; --trunk: #5b4130; --tree: #2d4a3a;
+  --hill-far: #1f3a37; --hill-near: #172c2a; --road: #2a3036;
+  --van: #dfe7ea; --van-trim: #2aa69c; --glass: #3d6a7c;
+  --eu-top: #0c1626; --eu-bot: #22324a;
+  --es-top: #2a1633; --es-bot: #6b3440;
+  --as-top: #04222a; --as-bot: #0f4a4a;
+  --stars: 1;
+  --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 12px 32px -12px rgb(0 0 0 / .6);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--eu-bot);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ---------- Scene ---------- */
+.scene { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.sky { position: absolute; inset: 0; }
+.sky-eu { background: linear-gradient(var(--eu-top), var(--eu-bot)); }
+.sky-es { background: linear-gradient(var(--es-top), var(--es-bot)); opacity: 0; }
+.sky-as { background: linear-gradient(var(--as-top), var(--as-bot)); opacity: 0; }
+.stars {
+  position: absolute; inset: 0 0 40% 0; opacity: calc(var(--stars) * .8);
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 8%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 44% 26%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 63% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 78% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 6%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 6% 40%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 55% 44%, #fff 50%, transparent 51%);
+}
+.sun {
+  position: absolute; width: 84px; height: 84px; border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 0 14px color-mix(in oklab, var(--sun) 25%, transparent), 0 0 80px 20px color-mix(in oklab, var(--sun) 35%, transparent);
+  left: 8%; top: 22%;
+}
+.ground { position: absolute; left: 0; right: 0; bottom: 0; height: 26vh; min-height: 150px; }
+.ground svg.hills { position: absolute; inset: 0; width: 100%; height: 100%; }
+.flora { position: absolute; left: 0; right: 0; bottom: 30%; height: 100%; }
+.flora svg { position: absolute; bottom: 0; transform-origin: 50% 100%; overflow: visible; }
+.road {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 30%;
+  background: var(--road);
+}
+.road::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 46%; height: 3px;
+  background: repeating-linear-gradient(90deg, color-mix(in oklab, var(--sun) 80%, #fff) 0 28px, transparent 28px 56px);
+  background-position-x: calc(var(--p, 0) * -1400px);
+}
+.van { position: absolute; bottom: 20%; left: 16px; width: 120px; height: 60px; will-change: transform; }
+
+/* ---------- Content ---------- */
+main {
+  position: relative; z-index: 1;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 8vh 34vh;
+  display: grid; gap: 38vh;
+}
+.stop { max-width: 680px; width: 100%; justify-self: center; }
+@media (min-width: 1100px) {
+  .stop:nth-of-type(even) { transform: translateX(14%); }
+  .stop:nth-of-type(odd) { transform: translateX(-14%); }
+}
+
+.postcard {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4vw, 40px);
+}
+.postmark {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px;
+  font-family: var(--f-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px; padding-right: 70px;
+}
+.postmark b { color: var(--sea); font-weight: 600; }
+.stamp {
+  position: absolute; top: 18px; right: 18px; width: 56px; height: 64px;
+  display: grid; place-items: center; text-align: center;
+  font-family: var(--f-mono); font-size: .6rem; line-height: 1.2; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--sea);
+  border: 2px dashed color-mix(in oklab, var(--sea) 60%, transparent);
+  border-radius: 3px;
+  transform: rotate(4deg);
+}
+.stamp strong { display: block; font-family: var(--f-display); font-size: 1.35rem; line-height: 1; letter-spacing: 0; }
+
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -.015em; }
+h1 { font-size: clamp(2.3rem, 6.4vw, 4rem); line-height: 1.02; font-weight: 800; }
+h1 .wave { color: var(--sea); }
+h2 { font-size: clamp(1.6rem, 3.8vw, 2.3rem); line-height: 1.1; font-weight: 700; }
+h3 { font-size: 1.12rem; font-weight: 700; letter-spacing: 0; }
+p { margin: 0; max-width: 62ch; }
+.lede { font-size: 1.18rem; color: var(--ink); }
+.stack { display: grid; gap: 18px; }
+.muted { color: var(--muted); }
+a { color: var(--sea); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 3px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.chips li {
+  font-family: var(--f-mono); font-size: .78rem;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--ink);
+}
+.cue { font-family: var(--f-mono); font-size: .8rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.cue span { display: inline-block; animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(4px); } }
+
+/* Experience */
+.jobs { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; }
+.job { display: grid; grid-template-columns: 8.5rem 1fr; gap: 4px 18px; }
+.job .when { font-family: var(--f-mono); font-size: .78rem; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.job .what { min-width: 0; display: grid; gap: 4px; }
+.job p { font-size: .98rem; }
+@media (max-width: 560px) { .job { grid-template-columns: 1fr; } }
+.brands { font-size: .95rem; }
+
+/* Requirement map */
+.fit { border-top: 1px solid var(--line); padding-top: 20px; display: grid; gap: 12px; }
+.fit-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 4px 20px; font-size: .95rem; }
+.fit-row dt { font-family: var(--f-mono); font-size: .78rem; color: var(--muted); padding-top: 3px; }
+.fit-row dd { margin: 0; min-width: 0; }
+.fit dl { margin: 0; display: grid; gap: 12px; }
+@media (max-width: 560px) { .fit-row { grid-template-columns: 1fr; } }
+
+/* Agent workflow */
+.setup { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.setup li { display: grid; grid-template-columns: 1.6rem 1fr; gap: 10px; }
+.setup .k { font-family: var(--f-mono); color: var(--sea); font-weight: 600; }
+.setup li > div { min-width: 0; }
+.terminal {
+  font-family: var(--f-mono); font-size: .82rem; line-height: 1.55;
+  background: color-mix(in oklab, var(--ink) 92%, var(--sea));
+  color: color-mix(in oklab, var(--paper) 92%, var(--sea));
+  border-radius: 6px; padding: 14px 16px; overflow-x: auto; white-space: pre;
+}
+.terminal .c { opacity: .6; }
+.terminal .ok { color: var(--sun); }
+
+/* Time zones */
+.tz { display: grid; gap: 10px; }
+.tz-row { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); align-items: center; gap: 12px; }
+.tz-label { font-size: .88rem; line-height: 1.25; }
+.tz-label small { display: block; font-family: var(--f-mono); font-size: .7rem; color: var(--muted); }
+.tz-track {
+  position: relative; height: 22px; border-radius: 4px;
+  background: repeating-linear-gradient(90deg, color-mix(in oklab, var(--line) 70%, transparent) 0 1px, transparent 1px calc(100% / 24));
+  border: 1px solid var(--line);
+}
+.tz-bar { position: absolute; top: 3px; bottom: 3px; border-radius: 3px; background: color-mix(in oklab, var(--sea) 30%, var(--paper)); border: 1px solid var(--sea); }
+.tz-bar.me { background: color-mix(in oklab, var(--sun) 55%, var(--paper)); border-color: color-mix(in oklab, var(--sun) 70%, var(--ink)); }
+.tz-overlap {
+  position: absolute; top: -6px; bottom: -6px; border-radius: 4px;
+  background: color-mix(in oklab, var(--sun) 22%, transparent);
+  outline: 2px dashed color-mix(in oklab, var(--sun) 80%, var(--ink));
+}
+.tz-axis { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 12px; }
+.tz-ticks { position: relative; height: 1.2rem; font-family: var(--f-mono); font-size: .7rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tz-ticks span { position: absolute; transform: translateX(-50%); }
+.tz-ticks span:first-child { transform: none; }
+.tz-ticks span:last-child { transform: translateX(-100%); }
+.tz-body { position: relative; display: grid; gap: 10px; }
+@media (max-width: 560px) {
+  .tz-row, .tz-axis { grid-template-columns: 1fr; gap: 4px; }
+  .tz-axis > :first-child { display: none; }
+}
+
+/* Contact */
+.contact { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.email {
+  font-family: var(--f-mono); font-size: 1rem;
+  padding: 10px 14px; border: 1px solid var(--line); border-radius: 6px;
+  user-select: all; background: color-mix(in oklab, var(--paper) 90%, var(--sea));
+}
+.btn {
+  font: 600 .95rem var(--f-body);
+  padding: 10px 16px; border-radius: 6px; cursor: pointer;
+  background: var(--sea); color: var(--paper); border: 1px solid var(--sea);
+}
+.btn.ghost { background: transparent; color: var(--sea); text-decoration: none; display: inline-block; }
+.btn:hover { filter: brightness(1.08); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 0; }
+.facts div { border-left: 2px solid var(--sea); padding-left: 12px; }
+.facts dt { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 2px 0 0; font-weight: 700; }
+
+/* Build notes */
+.notes { font-size: .95rem; }
+.notes blockquote {
+  margin: 0; padding: 12px 16px; border-left: 3px solid var(--sun);
+  background: color-mix(in oklab, var(--paper) 85%, var(--sun));
+  font-style: italic; border-radius: 0 6px 6px 0; max-width: 62ch;
+}
+.notes ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 6px; max-width: 62ch; }
+
+/* Progress rail */
+.rail {
+  position: fixed; z-index: 2; top: 50%; transform: translateY(-50%);
+  right: max(18px, env(safe-area-inset-right, 0px));
+  display: none; gap: 14px; margin: 0; padding: 0; list-style: none;
+  font-family: var(--f-mono); font-size: .72rem; letter-spacing: .04em;
+}
+.rail a { display: flex; align-items: center; justify-content: flex-end; gap: 10px; color: var(--muted); text-decoration: none; }
+.rail a::after { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--muted); background: var(--paper); transition: background .2s, border-color .2s; }
+.rail a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+.rail a[aria-current="true"]::after { background: var(--sea); border-color: var(--sea); }
+@media (min-width: 900px) { .rail { display: grid; } }
+
+.now {
+  position: fixed; z-index: 2;
+  left: max(16px, env(safe-area-inset-left, 0px));
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  font-family: var(--f-mono); font-size: .74rem; letter-spacing: .05em; text-transform: uppercase;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  padding: 6px 12px; border-radius: 999px; box-shadow: var(--shadow);
+}
+.now b { color: var(--sea); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cue span { animation: none; }
+  .rail a::after { transition: none; }
+}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0}</style>
+</head>
+<body>
+<div class="scene" aria-hidden="true">
+  <div class="sky sky-eu"></div>
+  <div class="sky sky-es" id="skyEs"></div>
+  <div class="sky sky-as" id="skyAs"></div>
+  <div class="stars"></div>
+  <div class="sun" id="sun"></div>
+  <div class="ground">
+    <svg class="hills" viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path d="M0 70 C180 30 320 60 480 48 C640 36 760 10 940 34 C1110 56 1260 26 1440 44 L1440 200 L0 200Z" fill="var(--hill-far)"/>
+      <path d="M0 110 C200 84 380 104 560 92 C760 78 900 96 1080 88 C1240 82 1340 94 1440 90 L1440 200 L0 200Z" fill="var(--hill-near)"/>
+    </svg>
+    <div class="flora" id="flora"></div>
+    <div class="road"></div>
+    <svg class="van" id="van" viewBox="0 0 120 60">
+      <rect x="4" y="8" width="96" height="38" rx="7" fill="var(--van)" stroke="var(--road)" stroke-width="1.5"/>
+      <path d="M100 18 L110 22 Q116 26 116 34 L116 44 Q116 46 114 46 L100 46Z" fill="var(--van)" stroke="var(--road)" stroke-width="1.5"/>
+      <path d="M101 21 L109 24 Q112 27 112 31 L101 31Z" fill="var(--glass)"/>
+      <rect x="14" y="15" width="22" height="13" rx="3" fill="var(--glass)"/>
+      <rect x="44" y="15" width="30" height="13" rx="3" fill="var(--glass)"/>
+      <g class="tuna"><path d="M55 28 Q55 20 61 19 Q67 19 67 25 L67 28Z" fill="var(--trunk)"/><ellipse cx="56.5" cy="21.5" rx="2.4" ry="4" transform="rotate(25 56.5 21.5)" fill="var(--road)"/><ellipse cx="68.5" cy="24" rx="3.2" ry="2.2" fill="var(--trunk)"/><circle cx="71.2" cy="23.6" r="1" fill="var(--road)"/><circle cx="63.5" cy="22.5" r="0.9" fill="var(--road)"/></g>
+      <rect x="4" y="33" width="112" height="4" fill="var(--van-trim)"/>
+      <rect x="20" y="3" width="44" height="5" rx="2" fill="var(--road)"/>
+      <g class="wheel"><circle cx="28" cy="47" r="9" fill="var(--road)"/><circle cx="28" cy="47" r="3.5" fill="var(--van)"/></g>
+      <g class="wheel"><circle cx="92" cy="47" r="9" fill="var(--road)"/><circle cx="92" cy="47" r="3.5" fill="var(--van)"/></g>
+    </svg>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="palm" viewBox="0 0 100 160">
+      <path d="M52 160 C51 125 47 92 50 58" stroke="var(--trunk)" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M50 58 C34 40 14 42 0 58 C16 50 32 52 50 61Z" fill="var(--leaf)"/>
+      <path d="M50 58 C66 40 86 42 100 58 C84 50 68 52 50 61Z" fill="var(--leaf)"/>
+      <path d="M50 58 C40 34 24 26 10 30 C26 34 38 44 49 60Z" fill="var(--leaf)"/>
+      <path d="M50 58 C60 34 76 26 90 30 C74 34 62 44 51 60Z" fill="var(--leaf)"/>
+      <path d="M50 58 C46 36 50 20 58 12 C54 28 54 42 51 59Z" fill="var(--leaf)"/>
+      <path d="M50 58 C34 58 22 70 18 84 C28 72 38 66 50 62Z" fill="var(--leaf)"/>
+      <path d="M50 58 C66 58 78 70 82 84 C72 72 62 66 50 62Z" fill="var(--leaf)"/>
+    </symbol>
+    <symbol id="tree" viewBox="0 0 60 120">
+      <rect x="27" y="70" width="6" height="50" rx="2" fill="var(--trunk)"/>
+      <ellipse cx="30" cy="52" rx="24" ry="34" fill="var(--tree)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="now" aria-hidden="true">Now passing: <b id="nowLabel">Germany</b></div>
+
+<nav aria-label="Stops">
+  <ol class="rail" id="rail">
+    <li><a href="#hello" aria-current="true">Hello</a></li>
+    <li><a href="#road">The road so far</a></li>
+    <li><a href="#agents">Working with agents</a></li>
+    <li><a href="#timezones">Time zones</a></li>
+    <li><a href="#arrival">Why Genki</a></li>
+    <li><a href="#built">How I built this</a></li>
+  </ol>
+</nav>
+
+<main>
+  <section class="stop" id="hello" data-place="Germany">
+    <article class="postcard stack">
+      <div class="stamp" aria-hidden="true"><div><strong>1</strong>of 6</div></div>
+      <div class="postmark"><b>Departure</b><span>Germany</span><span>UTC+1</span></div>
+      <h1>Hi Genki, <span class="wave">I'm Dine.</span> I'd love to be your Lead Web Engineer.</h1>
+      <p class="lede">I'm a senior frontend developer with 15+ years of experience in React, TypeScript and design-driven web work. I build production software with Claude Code every day. I also live and work from my camper van with my dog Tuna, so I'm the kind of long-term traveller you build for.</p>
+      <ul class="chips" aria-label="Core stack">
+        <li>React</li><li>TypeScript</li><li>React Router</li><li>Next.js</li><li>Astro</li><li>Vite</li><li>SCSS</li><li>GraphQL</li><li>Claude Code</li>
+      </ul>
+      <p class="cue"><span aria-hidden="true">↓</span> Scroll to drive south</p>
+    </article>
+  </section>
+
+  <section class="stop" id="road" data-place="Across Europe">
+    <article class="postcard stack">
+      <div class="stamp" aria-hidden="true"><div><strong>2</strong>of 6</div></div>
+      <div class="postmark"><b>The road so far</b><span>15+ years</span><span>Europe-wide clients</span></div>
+      <h2>Production web apps, from campaign sites to insurance products</h2>
+      <ul class="jobs">
+        <li class="job">
+          <span class="when">2026 – now</span>
+          <div class="what">
+            <h3>German public broadcaster</h3>
+            <p>Components and templates for the shared component library behind the websites of Germany's public broadcasters. Next.js 16, React 19, TypeScript, Tailwind, a Turborepo monorepo and Storybook. Design tokens synced from Figma, GDPR consent for social embeds, accessibility tested with NVDA.</p>
+          </div>
+        </li>
+        <li class="job">
+          <span class="when">2026</span>
+          <div class="what">
+            <h3>Many Makers · Sanrio, Hello Kitty Togetherness</h3>
+            <p>Map and landing page for a global campaign in English, Japanese and French. Designed the data architecture for user-generated content at launch scale (PostgreSQL, Prisma) with moderation tools, then migrated the platform to Google Cloud with automated deploys via GitHub Actions and Docker.</p>
+          </div>
+        </li>
+        <li class="job">
+          <span class="when">2019 – 2024</span>
+          <div class="what">
+            <h3>NG Launchpad / The49</h3>
+            <p>Lead developer for several home and health insurance products. Built interactive finder tools that guide people through complex decisions.</p>
+          </div>
+        </li>
+        <li class="job">
+          <span class="when">2026</span>
+          <div class="what">
+            <h3>Electric North</h3>
+            <p>Field-worker tools in React and TypeScript. Refactored the PDF upload flow and cut page load time by 90%.</p>
+          </div>
+        </li>
+        <li class="job">
+          <span class="when">2016 – 2020</span>
+          <div class="what">
+            <h3>Agencies and studios</h3>
+            <p class="brands">Interactive work for Stella McCartney, Adidas, Red Bull, John Lewis, Zalando and the Gates Foundation.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="fit">
+        <h3>What you asked for, and where I've done it</h3>
+        <dl>
+          <div class="fit-row"><dt>Shared component libraries, monorepos</dt><dd>Broadcaster component library in a Turborepo monorepo with Storybook</dd></div>
+          <div class="fit-row"><dt>CI/CD, deployment automation</dt><dd>GitHub Actions and Docker deploys to Google Cloud Run for the Sanrio platform</dd></div>
+          <div class="fit-row"><dt>Security, performance</dt><dd>GDPR consent management, content moderation, a 90% faster page load</dd></div>
+          <div class="fit-row"><dt>Pixel-perfect detail</dt><dd>Components built to Figma spec with tokens synced from Figma. MSc in Design and Digital Media, BSc in Computer Science</dd></div>
+          <div class="fit-row"><dt>Long-term architectural bets</dt><dd>Five years leading frontend on the same insurance products</dd></div>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <section class="stop" id="agents" data-place="Spain">
+    <article class="postcard stack">
+      <div class="stamp" aria-hidden="true"><div><strong>3</strong>of 6</div></div>
+      <div class="postmark"><b>Spain</b><span>Winter 2026/27</span><span>Camper office</span><span>Co-worker: Tuna</span></div>
+      <h2>How I work with AI agents</h2>
+      <p>Claude Code is part of my daily workflow on client projects. I steer it with structure, so it stays fast without becoming risky.</p>
+      <ul class="setup">
+        <li><span class="k" aria-hidden="true">→</span><div><h3>Guardrail hooks</h3><p>Hooks that block secrets and destructive commands before they run.</p></div></li>
+        <li><span class="k" aria-hidden="true">→</span><div><h3>Project skills</h3><p>Reusable skills, for example auditing design tokens against Figma through the Figma MCP.</p></div></li>
+        <li><span class="k" aria-hidden="true">→</span><div><h3>Parallel sessions</h3><p>Several agent sessions working side by side in git worktrees, each on its own branch.</p></div></li>
+      </ul>
+<pre class="terminal" aria-label="Example of a guardrail hook blocking a command"><span class="c"># agent tries something it shouldn't</span>
+$ git push --force origin main
+<span class="ok">✋ blocked by hook: destructive command on protected branch</span></pre>
+      <p>Your plan to let people from every department ship software needs the same layer: standard review, security checks and safe deploys built into the tooling. That's the part of this role I'm most excited about.</p>
+    </article>
+  </section>
+
+  <section class="stop" id="timezones" data-place="Europe ↔ Southeast Asia">
+    <article class="postcard stack">
+      <div class="stamp" aria-hidden="true"><div><strong>4</strong>of 6</div></div>
+      <div class="postmark"><b>Europe ↔ Southeast Asia</b><span>Async first</span></div>
+      <h2>Overlapping with your team</h2>
+      <p>Most of your team is in Europe and Southeast Asia. I work on Central European Time with flexible hours, so I can overlap with both. I like async work: written decisions, clear pull requests and meetings only when they help.</p>
+      <div class="tz" role="img" aria-label="Working hours in Central European Time, winter. Genki Europe 9 to 18, Genki Southeast Asia (UTC+7) 3 to 12, Dine 8 to 17. Everyone overlaps from 9 to 12.">
+        <div class="tz-body">
+          <div class="tz-row"><span class="tz-label">Genki · Europe<small>09–18 local</small></span><div class="tz-track"><span class="tz-bar" style="left:calc(9/24*100%);width:calc(9/24*100%)"></span></div></div>
+          <div class="tz-row"><span class="tz-label">Genki · SE Asia<small>UTC+7 · 09–18 local</small></span><div class="tz-track"><span class="tz-bar" style="left:calc(3/24*100%);width:calc(9/24*100%)"></span></div></div>
+          <div class="tz-row"><span class="tz-label">Dine<small>CET · flexible</small></span><div class="tz-track"><span class="tz-bar me" style="left:calc(8/24*100%);width:calc(9/24*100%)"></span><span class="tz-overlap" style="left:calc(9/24*100%);width:calc(3/24*100%)"></span></div></div>
+        </div>
+        <div class="tz-axis"><span></span><div class="tz-ticks"><span style="left:0">00</span><span style="left:25%">06</span><span style="left:50%">12</span><span style="left:75%">18</span><span style="left:100%">24 CET</span></div></div>
+      </div>
+      <p class="muted" style="font-size:.9rem">Dashed box: 09–12 CET, when all three overlap (winter time).</p>
+    </article>
+  </section>
+
+  <section class="stop" id="arrival" data-place="Wherever the road goes">
+    <article class="postcard stack">
+      <div class="stamp" aria-hidden="true"><div><strong>5</strong>of 6</div></div>
+      <div class="postmark"><b>Arrival</b><span>Next stop: Genki</span></div>
+      <h2>Why Genki</h2>
+      <p>You build health insurance for people who live on the road. I live on the road, and I spent five years building home and health insurance products. I'm also trained as a Functional Diagnostic Nutrition practitioner, so your vision of keeping people healthy beyond insurance is close to my heart.</p>
+      <dl class="facts">
+        <div><dt>Available</dt><dd>From December 2026</dd></div>
+        <div><dt>Works in</dt><dd>English and German</dd></div>
+        <div><dt>Based</dt><dd>Europe, on the road</dd></div>
+      </dl>
+      <div class="contact">
+        <span class="email" id="email">hello@dinealbrecht.net</span>
+        <button class="btn" type="button" id="copyBtn">Copy email</button>
+        <a class="btn ghost" href="https://dinealbrecht.net" target="_blank" rel="noopener">dinealbrecht.net</a>
+      </div>
+      <p class="muted" id="copyMsg" role="status" style="font-size:.9rem"></p>
+    </article>
+  </section>
+
+  <section class="stop" id="built" data-place="Behind the scenes">
+    <article class="postcard stack notes">
+      <div class="stamp" aria-hidden="true"><div><strong>6</strong>of 6</div></div>
+      <div class="postmark"><b>How I built this</b><span>Vibe-coded with Claude</span></div>
+      <h2>The prompt and the rules</h2>
+      <p>You asked for a vibe-coded application, so here it is. It started with this prompt:</p>
+      <blockquote>Can we create a vibe-coded job application page that screams digital nomad? Maybe a scroll-like experience with palm trees, and Europe and Asia as you scroll.</blockquote>
+      <p>Then I steered it with a few rules:</p>
+      <ul>
+        <li>Real places only. The van drives my actual route, Germany to Spain this winter. Asia appears as where your team is, not as a trip I invented.</li>
+        <li>Content comes from my CV, nothing made up.</li>
+        <li>Everything is readable without the animation, and the scene stays calm if you've turned on reduced motion.</li>
+        <li>Works on a phone, in light and dark mode, as a single file with no libraries.</li>
+      </ul>
+      <p>Claude wrote the code. I chose the concept, supplied the content, and reviewed and edited the result before sending it.</p>
+    </article>
+  </section>
+</main>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const skyEs = document.getElementById('skyEs');
+  const skyAs = document.getElementById('skyAs');
+  const sun = document.getElementById('sun');
+  const van = document.getElementById('van');
+  const flora = document.getElementById('flora');
+  const nowLabel = document.getElementById('nowLabel');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+  // Northern trees fade out as the van heads south; palms grow in.
+  const plants = [
+    { kind: 'tree', x: 6,  h: 92,  fade: [.18, .38] },
+    { kind: 'tree', x: 22, h: 74,  fade: [.2, .4] },
+    { kind: 'tree', x: 47, h: 100, fade: [.22, .42] },
+    { kind: 'tree', x: 71, h: 80,  fade: [.18, .36] },
+    { kind: 'tree', x: 90, h: 96,  fade: [.2, .4] },
+    { kind: 'palm', x: 12, h: 150, grow: [.3, .45] },
+    { kind: 'palm', x: 33, h: 120, grow: [.36, .5] },
+    { kind: 'palm', x: 58, h: 165, grow: [.42, .58] },
+    { kind: 'palm', x: 80, h: 135, grow: [.48, .62] },
+    { kind: 'palm', x: 95, h: 110, grow: [.6, .74] },
+    { kind: 'palm', x: 2,  h: 125, grow: [.66, .8] },
+    { kind: 'palm', x: 40, h: 140, grow: [.7, .84] },
+    { kind: 'palm', x: 68, h: 118, grow: [.74, .88] }
+  ].map(p => {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    const w = p.kind === 'palm' ? p.h * 100 / 160 : p.h * 60 / 120;
+    svg.setAttribute('width', w); svg.setAttribute('height', p.h);
+    svg.style.left = `calc(${p.x}% - ${w / 2}px)`;
+    const use = document.createElementNS(ns, 'use');
+    use.setAttribute('href', '#' + p.kind);
+    svg.appendChild(use);
+    flora.appendChild(svg);
+    return { ...p, el: svg };
+  });
+
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const max = root.scrollHeight - window.innerHeight;
+    const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    root.style.setProperty('--p', p.toFixed(4));
+    skyEs.style.opacity = ss(.2, .45, p);
+    skyAs.style.opacity = ss(.55, .8, p);
+
+    const vw = window.innerWidth;
+    van.style.transform = `translateX(${Math.max(0, p * (vw - 152))}px)`;
+
+    // Sun arcs from left to right across the sky.
+    const sx = 8 + p * 76;
+    const sy = 26 - Math.sin(p * Math.PI) * 14;
+    sun.style.left = sx + '%';
+    sun.style.top = sy + '%';
+
+    for (const pl of plants) {
+      if (pl.kind === 'tree') {
+        const f = 1 - ss(pl.fade[0], pl.fade[1], p);
+        pl.el.style.opacity = f;
+        pl.el.style.transform = `scale(${0.6 + 0.4 * f})`;
+      } else {
+        const g = ss(pl.grow[0], pl.grow[1], p);
+        pl.el.style.opacity = g > 0 ? 1 : 0;
+        pl.el.style.transform = `scale(${reduce.matches ? (g > 0 ? 1 : 0) : g})`;
+      }
+    }
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // Current stop label and rail
+  const links = [...document.querySelectorAll('#rail a')];
+  const stops = [...document.querySelectorAll('.stop')];
+  const io = new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      nowLabel.textContent = e.target.dataset.place;
+      links.forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id ? 'true' : 'false'));
+    }
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  stops.forEach(s => io.observe(s));
+
+  // Copy email
+  const btn = document.getElementById('copyBtn');
+  const msg = document.getElementById('copyMsg');
+  const email = document.getElementById('email');
+  btn.addEventListener('click', () => {
+    const text = email.textContent.trim();
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents(email);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      msg.textContent = 'Email selected. Press Ctrl+C or ⌘C to copy.';
+    };
+    try {
+      navigator.clipboard.writeText(text).then(() => { msg.textContent = 'Email copied.'; }, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
